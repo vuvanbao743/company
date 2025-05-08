@@ -34,7 +34,6 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        // Kiểm tra guard đang được sử dụng và đăng xuất tương ứng
         if (auth()->guard('admin')->check()) {
             auth()->guard('admin')->logout();
         } elseif (auth()->guard('user')->check()) {
@@ -45,7 +44,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
     
-        // Chuyển hướng về trang login
         return redirect()->route('login');
     }
     

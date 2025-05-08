@@ -26,13 +26,9 @@
             </div>
         @endif
 
-        {{-- @auth
-            @if (auth()->user()->role == 1) --}}
-                <a href="{{ route('admins.create-user') }}">
-                    <button type="button" class="btn btn-success mb-3">Add</button>
-                </a>
-            {{-- @endif
-        @endauth --}}
+        <a href="{{ route('admins.create-user') }}">
+            <button type="button" class="btn btn-success mb-3">Add</button>
+        </a>
 
         <table class="table table-bordered">
             <thead>
@@ -51,20 +47,21 @@
                 @foreach ($users as $item)
                     <tr>
                         <td>{{ $stt++ }}</td>
-        
+
                         <td>
-                            @if($item->avatar)
-                                <img src="{{ asset('storage/' . $item->avatar) }}" alt="avatar" width="100px" height="70px" style="object-fit: cover;">
+                            @if ($item->avatar)
+                                <img src="{{ asset('storage/' . $item->avatar) }}" alt="avatar" width="100px"
+                                    height="70px" style="object-fit: cover;">
                             @else
                                 <span class="text-muted">No Image</span>
                             @endif
                         </td>
-        
+
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->phone ?? '-' }}</td>
                         <td>{{ $item->address ?? '-' }}</td>
-        
+
                         <td>
                             <a href="{{ route('admins.detail-user', $item->id) }}">
                                 <button type="button" class="btn btn-warning btn-sm">Show</button>
@@ -72,8 +69,8 @@
                             <a href="{{ route('admins.edit-user', $item->id) }}">
                                 <button type="button" class="btn btn-primary btn-sm">Edit</button>
                             </a>
-                            <form action="{{ route('admins.delete-user', $item->id) }}" method="POST"
-                                  class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa?')">
+                            <form action="{{ route('admins.delete-user', $item->id) }}" method="POST" class="d-inline"
+                                onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -83,7 +80,7 @@
                 @endforeach
             </tbody>
         </table>
-        
+
     </body>
 
     </html>

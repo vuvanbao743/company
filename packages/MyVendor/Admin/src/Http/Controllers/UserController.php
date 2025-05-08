@@ -17,12 +17,12 @@ class UserController extends Controller
     public function showUser()
     {
         $users = User::all();
-        return view('admin::users.index', compact('users'));
+        return view('admin::admin.users.index', compact('users'));
     }
 
     public function createUser()
     {
-        return view('admin::users.create');
+        return view('admin::admin.users.create');
     }
 
     public function storeUser(Request $request)
@@ -61,13 +61,13 @@ class UserController extends Controller
     public function showDetailUser(string $id)
     {
         $user = User::find($id);
-        return view('admin::users.show', compact('user'));
+        return view('admin::admin.users.show', compact('user'));
     }
 
     public function showEditUser(string $id)
     {
         $user = User::find($id);
-        return view('admin::users.edit', compact('user'));
+        return view('admin::admin.users.edit', compact('user'));
     }
 
     public function updateUser(Request $request, string $id)
@@ -122,57 +122,52 @@ class UserController extends Controller
         return redirect()->route('admins.user')->with('success', 'Xóa tài khoản thành công!');
     }
 
-  
- public function userDetail()
- {
-     $user = Auth::guard('user')->user();
-     return view('user::user.profile', compact('user'));
- }
 
- public function userInfomation()
- {
-     $user = Auth::guard('user')->user();
-     return view('user::user.edit', compact('user'));
- }
+    public function userDetail()
+    {
+        $user = Auth::guard('user')->user();
+        return view('user::client.user.profile', compact('user'));
+    }
 
- public function userUpdate(Request $request)
-{
- $user = Auth::guard('user')->user();
+    public function userInfomation()
+    {
+        $user = Auth::guard('user')->user();
+        return view('user::client.user.edit', compact('user'));
+    }
 
- $request->validate([
-     'name' => 'required|string|max:255',
-     'email' => 'required|email|unique:users,email,' . $user->id,
-     'phone' => 'nullable|string|max:20',
-     'address' => 'nullable|string|max:255',
-     'password' => 'nullable|string|min:6|confirmed',
-     'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
- ]);
+    public function userUpdate(Request $request)
+    {
+        $user = Auth::guard('user')->user();
 
- $user->name = $request->name;
- $user->email = $request->email;
- $user->phone = $request->phone;
- $user->address = $request->address;
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'password' => 'nullable|string|min:6|confirmed',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
 
- if ($request->filled('password')) {
-     $user->password = Hash::make($request->password);
- }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
 
- // Xử lý upload avatar nếu có
- if ($request->hasFile('avatar')) {
-     // Xóa avatar cũ nếu có
-     if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
-         Storage::disk('public')->delete($user->avatar);
-     }
- 
-     // Lưu avatar mới
-     $avatarPath = $request->file('avatar')->store('avatars', 'public');
-     $user->avatar = $avatarPath; // Gán trực tiếp vào model
- }
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
 
- $user->save();
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
+            }
 
- return redirect()->route('user.profile.edit')->with('success', 'Cập nhật thành công!');
-}
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $avatarPath;
+        }
 
+        $user->save();
 
+        return redirect()->route('user.profile.edit')->with('success', 'Cập nhật thành công!');
+    }
 }

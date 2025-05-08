@@ -1,4 +1,5 @@
 <?php
+
 namespace MyVendor\Admin\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable; // Thêm dòng này
@@ -10,16 +11,21 @@ class User extends Model implements Authenticatable // Implement Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'email', 'password', 'address', 'phone', 'avatar'     
+        'name',
+        'email',
+        'password',
+        'address',
+        'phone',
+        'avatar'
     ];
 
     protected $hidden = ['password'];
 
     // Thêm các phương thức cần thiết từ Authenticatable:
     public function getAuthPasswordName()
-{
-    return 'password'; // Tên cột chứa mật khẩu trong bảng người dùng
-}
+    {
+        return 'password'; // Tên cột chứa mật khẩu trong bảng người dùng
+    }
     public function getAuthIdentifierName()
     {
         return 'id'; // Hoặc tên cột bạn dùng để nhận dạng người dùng (mặc định là 'id')
