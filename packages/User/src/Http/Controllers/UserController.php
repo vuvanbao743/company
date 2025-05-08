@@ -1,15 +1,14 @@
 <?php
 
-namespace MyVendor\Admin\Http\Controllers;
+namespace User\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MyVendor\Admin\Models\User;
+use User\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -84,7 +83,6 @@ class UserController extends Controller
             'phone'    => 'nullable|string|max:20',
             'address'  => 'nullable|string|max:255',
             'avatar'   => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'password' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -165,9 +163,12 @@ class UserController extends Controller
             $avatarPath = $request->file('avatar')->store('avatars', 'public');
             $user->avatar = $avatarPath;
         }
-
-        $user->save();
+        /** @var \User\Models\User $user */
+        $user->update();
 
         return redirect()->route('user.profile.edit')->with('success', 'Cập nhật thành công!');
+        // Hoặc debug thêm:
+        dd(route('user.profile.edit'));
+        
     }
 }

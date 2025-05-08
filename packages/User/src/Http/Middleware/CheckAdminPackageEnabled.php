@@ -1,5 +1,5 @@
 <?php
-namespace MyVendor\Admin\Http\Middleware;
+namespace User\Http\Middleware;
 
 use Closure;
 use App\Models\Setting;

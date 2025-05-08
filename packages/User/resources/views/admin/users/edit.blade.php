@@ -38,13 +38,13 @@
                     @enderror
                 </div>
             
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Mật khẩu</label>
                     <input type="password" class="form-control" name="password" value="{{ old('password' , $user->password) }}">
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                </div>
+                </div> --}}
             
                 <div class="mb-3">
                     <label class="form-label">Nơi ở</label>

@@ -9,8 +9,7 @@
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "mongodb/laravel-mongodb": "^5.4",
-        "my-vendor/admin": "dev-main"
+        "mongodb/laravel-mongodb": "^5.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -26,13 +25,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "MyVendor\\Admin\\": "packages/MyVendor/Admin/src/"
+            "User\\": "packages/User/src/"
         }
     },
     "repositories": [
         {
             "type": "path",
-            "url": "packages/MyVendor/Admin"
+            "url": "packages/User"
         }
     ],
     "autoload-dev": {
@@ -68,7 +67,7 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                 "MyVendor\\Admin\\AdminServiceProvider"
+                 "User\\AdminServiceProvider"
             ]
         }
     },

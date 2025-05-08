@@ -1,15 +1,15 @@
 <?php
 
-namespace MyVendor\Admin\Http\Middleware;
+namespace User\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class SetUserGuardAsDefault
+class SetAdminGuardAsDefault
 {
     public function handle($request, Closure $next)
     {
-        Auth::shouldUse('user');
+        Auth::shouldUse('admin'); 
         return $next($request);
     }
 }

@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use MyVendor\Admin\Http\Controllers\AuthController;
-use MyVendor\Admin\Http\Controllers\UserController;
+use User\Http\Controllers\AuthController;
+use User\Http\Controllers\UserController;
 // trang chủ
 Route::middleware(['web'])->get('/domain', function () {
     if (!Auth::guard('user')->check() && !Auth::guard('admin')->check()) {

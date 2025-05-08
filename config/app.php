@@ -75,7 +75,7 @@ return [
          * Package Service Providers...
          */
         MongoDB\Laravel\MongoDBServiceProvider::class, // MongoDB provider 
-        MyVendor\Admin\AdminServiceProvider::class,    // Package 
+        User\AdminServiceProvider::class,    // Package 
 
         /*
          * Application Service Providers...

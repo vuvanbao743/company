@@ -1,12 +1,12 @@
 <?php
-namespace MyVendor\Admin;
+namespace User;
 use Illuminate\Support\ServiceProvider;
-use MyVendor\Admin\Http\Middleware\CheckIfAdminMiddleware;
-use MyVendor\Admin\Http\Middleware\SetAdminGuardAsDefault;
-use MyVendor\Admin\Http\Middleware\CheckAdminPackageEnabled;
-use MyVendor\Admin\Http\Middleware\EnsureAdminAuthenticated;
-use MyVendor\Admin\Http\Middleware\RedirectIfAuthenticatedUser;
-use MyVendor\Admin\Http\Middleware\RedirectIfAuthenticatedAdmin;
+use User\Http\Middleware\CheckIfAdminMiddleware;
+use User\Http\Middleware\SetAdminGuardAsDefault;
+use User\Http\Middleware\CheckAdminPackageEnabled;
+use User\Http\Middleware\EnsureAdminAuthenticated;
+use User\Http\Middleware\RedirectIfAuthenticatedUser;
+use User\Http\Middleware\RedirectIfAuthenticatedAdmin;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -18,8 +18,8 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
-        $this->loadViewsFrom(base_path('packages/MyVendor/Admin/resources/views'), 'admin');
-        $this->loadViewsFrom(base_path('packages/MyVendor/Admin/resources/views'), 'user');
+        $this->loadViewsFrom(base_path('packages/User/resources/views'), 'admin');
+        $this->loadViewsFrom(base_path('packages/User/resources/views'), 'user');
         app('router')->aliasMiddleware('admin.auth', EnsureAdminAuthenticated::class);
         app('router')->aliasMiddleware('admin.guest', RedirectIfAuthenticatedAdmin::class);
         app('router')->aliasMiddleware('user.guest', RedirectIfAuthenticatedUser::class);

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyVendor\Admin\Models;
+namespace User\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable; // Thêm dòng này
 use MongoDB\Laravel\Eloquent\Model;
