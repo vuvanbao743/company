@@ -18,7 +18,7 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
-        // $this->loadViewsFrom(base_path('packages/User/resources/views'), 'admin');
+        $this->loadViewsFrom(base_path('packages/User/resources/views'), 'admin');
         $this->loadViewsFrom(base_path('packages/User/resources/views'), 'user');
         app('router')->aliasMiddleware('admin.auth', EnsureAdminAuthenticated::class);
         app('router')->aliasMiddleware('admin.guest', RedirectIfAuthenticatedAdmin::class);
