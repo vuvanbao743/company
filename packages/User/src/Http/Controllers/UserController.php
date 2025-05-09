@@ -167,8 +167,6 @@ class UserController extends Controller
         $user->update();
 
         return redirect()->route('user.profile.edit')->with('success', 'Cập nhật thành công!');
-        // Hoặc debug thêm:
-        dd(route('user.profile.edit'));
         
     }
 }

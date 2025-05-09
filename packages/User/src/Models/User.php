@@ -28,12 +28,12 @@ class User extends Model implements Authenticatable // Implement Authenticatable
     }
     public function getAuthIdentifierName()
     {
-        return 'id'; // Hoặc tên cột bạn dùng để nhận dạng người dùng (mặc định là 'id')
+        return 'id'; // tên cột nhận dạng người dùng 'id'
     }
 
     public function getAuthIdentifier()
     {
-        return $this->getKey(); // Mặc định là 'id'
+        return $this->getKey(); // 'id'
     }
 
     public function getAuthPassword()
