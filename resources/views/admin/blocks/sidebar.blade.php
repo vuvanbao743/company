@@ -47,7 +47,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Các Package:</h6>
-                <a class="collapse-item" href="{{route('admins.settings')}}">User</a>
+                <a class="collapse-item" href="{{route('admins.settings')}}">Template</a>
             </div>
         </div>
     </li>
@@ -78,10 +78,10 @@
 
 
     
-    @php
+    {{-- @php
     $packageEnabled = \App\Models\Setting::get('admin_package_enabled', false); // <-- sửa namespace đúng
 @endphp
-@if($packageEnabled)
+@if($packageEnabled) --}}
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
@@ -97,7 +97,7 @@
 </li>
 <!-- Divider -->
 <hr class="sidebar-divider">
-@endif
+{{-- @endif --}}
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

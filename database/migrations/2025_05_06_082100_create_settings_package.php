@@ -13,16 +13,19 @@ return new class extends Migration
     public function up(): void
     {
         Setting::updateOrCreate(
-            ['_id' => 'admin_package_enabled'],
-            ['value' => true]
+          
+            ['key' => 'import_export_enabled'],
+            ['value' => '1'], // bật
+        ['created_at' => now()],
+        ['updated_at' => now()],
         );
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Setting::where('_id', 'admin_package_enabled')->delete();
-    }
+    // public function down(): void
+    // {
+    //     Setting::where('_id', 'admin_package_enabled')->delete();
+    // }
 };

@@ -123,14 +123,14 @@ class UserController extends Controller
 
     public function userDetail()
     {
-        $user = Auth::guard('user')->user();
-        return view('user::client.user.profile', compact('user'));
+       $user = Auth::guard('user')->user();
+        return view('user::client.template1.profile', compact('user'));
     }
 
     public function userInfomation()
     {
         $user = Auth::guard('user')->user();
-        return view('user::client.user.edit', compact('user'));
+        return view('user::client.template1.edit', compact('user'));
     }
 
     public function userUpdate(Request $request)
@@ -166,7 +166,7 @@ class UserController extends Controller
         /** @var \User\Models\User $user */
         $user->update();
 
-        return redirect()->route('user.profile.edit')->with('success', 'Cập nhật thành công!');
+        return redirect()->route('user.template1.profile.edit')->with('success', 'Cập nhật thành công!');
         
     }
 }

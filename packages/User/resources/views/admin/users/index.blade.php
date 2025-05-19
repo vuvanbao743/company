@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('adminlte::page')
 
 @section('content')
     <!DOCTYPE html>

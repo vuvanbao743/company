@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('adminlte::page')
 <!DOCTYPE html>
 <html lang="en">
 

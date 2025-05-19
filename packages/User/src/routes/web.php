@@ -1,16 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use User\Http\Controllers\AuthController;
 use User\Http\Controllers\UserController;
 // trang chủ
-Route::middleware(['web'])->get('/domain', function () {
-    if (!Auth::guard('user')->check() && !Auth::guard('admin')->check()) {
-        return redirect()->route('login');
-    }
+Route::middleware(['web','check.admin.package.enabled'])->get('/', function () {
+    // if (!Auth::guard('user')->check() && !Auth::guard('admin')->check()) {
+    //     return redirect()->route('login');
+    // }
 
-    return view('admin::client.user.home');
+    // return view('admin::client.template2.index');
+
+     $adminPackageEnabled = Setting::get('admin_package_enabled', false);
+
+    if ($adminPackageEnabled) {
+        return view('admin::client.template1.index');
+    } else {
+        return view('admin::client.template2.index');
+    }
 })->name('home');
 
 // login logout
@@ -26,13 +35,13 @@ Route::middleware(['web'])->group(function () {
 });
 
 // sửa thông tin của user
-Route::middleware(['web', 'auth:user', 'auth', 'check.admin.package.enabled'])->group(function () {
+Route::middleware(['web', 'auth:user', 'auth'])->group(function () {
     Route::get('/user/profile', [UserController::class, 'userDetail'])->name('user.profile');
     Route::get('/user/profile/edit', [UserController::class, 'userInfomation'])->name('user.profile.edit');
     Route::post('/user/profile/update', [UserController::class, 'userUpdate'])->name('user.profile.update');
 });
-
-Route::prefix('admins')->middleware(['web', 'admin.auth', 'admin.default.guard', 'check.admin.package.enabled'])->group(function () {
+// , 'check.admin.package.enabled'
+Route::prefix('admins')->middleware(['web', 'admin.auth', 'admin.default.guard'])->group(function () {
     Route::middleware('check.admin')->group(function () {
         // quản lý tài khoản user
         Route::get('user', [UserController::class, 'showUser'])->name('admins.user');

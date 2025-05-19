@@ -16,15 +16,24 @@
         </div>
     </form>
 
-    <form method="POST" action="{{ route('logout') }}" class="d-inline">
-        @csrf
-        <button type="submit" class="btn btn-danger btn-sm">Đăng xuất</button>
-    </form>
 
-    @auth
-        <a href="{{ route('admins.edit-account', auth()->user()->id) }}" class="ml-2">
-            <button type="button" class="btn btn-primary btn-sm">Sửa thông tin</button>
-        </a>
-    @endauth
-
+    @if (auth('user')->check())
+        <h6 class="dropdown-header">Xin chào {{ auth('user')->user()->name }}</h6>
+        @php
+            $packageEnabled = \App\Models\Setting::get('admin_package_enabled', false);
+        @endphp
+        @if ($packageEnabled)
+            <a class="dropdown-item" href="{{ route('user.profile') }}">Xem/Sửa thông
+                tin</a>
+        @endif
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button class="dropdown-item" type="submit">Đăng xuất</button>
+        </form>
+    @else
+        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-danger btn-sm">Đăng xuất</button>
+        </form>
+    @endif
 </nav>

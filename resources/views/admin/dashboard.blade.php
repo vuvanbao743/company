@@ -1,8 +1,16 @@
-@extends('admin.master')
+{{-- @extends('admin.master')
 
 @section('title')
     {{ $title }}
-@endsection
+@endsection --}}
+
+@extends('adminlte::page')
+
+@section('title', 'Trang Quản Trị')
+
+{{-- @section('content_header')
+    <h1>Danh sách người dùng</h1>
+@endsection --}}
 
 @section('content')
     @if(auth('admin')->check())

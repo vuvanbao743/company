@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('adminlte::page')
 
 @section('content')
     <!DOCTYPE html>
@@ -33,6 +33,28 @@
                 </a>
             @endif
         @endauth
+        
+        @php
+            $packageEnabled = \App\Models\Setting::get('import_export_enabled', true);
+        @endphp
+        @if ($packageEnabled)
+            <div class="d-flex justify-content-between mb-3">
+                <div>
+                    <a href="{{ route('admins.export') }}" class="btn btn-outline-primary">
+                        Export Excel
+                    </a>
+                </div>
+
+                <form action="{{ route('admins.import') }}" method="POST" enctype="multipart/form-data"
+                    class="d-flex gap-2">
+                    @csrf
+                    <input type="file" name="excel_file" class="form-control" required>
+                    <button type="submit" class="btn btn-outline-success">
+                        Import Excel
+                    </button>
+                </form>
+            </div>
+        @endif
 
         <table class="table table-bordered">
             <thead>
