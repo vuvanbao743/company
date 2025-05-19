@@ -4,9 +4,9 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use User\Http\Controllers\AuthController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\AdminExportController;
-use App\Http\Controllers\AdminImportController;
 use App\Http\Controllers\AdminSettingController;
+use Excel\Http\Controllers\AdminExportController;
+use Excel\Http\Controllers\AdminImportController;
 
 
 Route::middleware(['web','check.admin.package.enabled'])->get('/', function () {

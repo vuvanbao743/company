@@ -76,7 +76,7 @@ return [
          */
         MongoDB\Laravel\MongoDBServiceProvider::class, // MongoDB provider 
         User\AdminServiceProvider::class,    // Package 
-
+        Maatwebsite\Excel\ExcelServiceProvider::class, // Excel provider
         /*
          * Application Service Providers...
          */
@@ -133,6 +133,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

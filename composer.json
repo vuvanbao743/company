@@ -27,7 +27,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "User\\": "packages/User/src/"
+            "User\\": "packages/User/src/",
+            "Excel\\": "packages/Excel/src/",
+            "Maatwebsite\\Excel\\": "packages/excel/Maatwebsite/LaravelExcel/src/",
+            "PhpOffice\\PhpSpreadsheet\\": "packages/excel/PhpOffice/PhpSpreadsheet/src/PhpSpreadsheet/"
         }
     },
     "repositories": [
@@ -69,7 +72,8 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                "User\\AdminServiceProvider"
+                "User\\AdminServiceProvider",
+                "Excel\\AdminServiceProvider"
             ]
         }
     },

@@ -1,0 +1,17 @@
+{
+  "name": "user/excel",
+  "description": "Excel module for Laravel",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Excel\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Excel\\ExcelServiceProvider"
+      ]
+    }
+  }
+}

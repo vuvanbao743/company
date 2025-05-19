@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Excel\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use MongoDB\Client;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
