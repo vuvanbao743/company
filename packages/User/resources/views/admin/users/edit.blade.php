@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte.master')
 
     <!DOCTYPE html>
     <html lang="en">
@@ -17,7 +17,7 @@
 
     <body>
         @section('content')
-        <h1 style="text-align: center">Chỉnh sửa thông tin tài khoản</h1>
+        
         <div class="container">
             <form action="{{ route('admins.update-user', $user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf

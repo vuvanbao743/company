@@ -15,13 +15,15 @@ class UserController extends Controller
 {
     public function showUser()
     {
+        $title = "Quản lý tài khoản User";
         $users = User::all();
-        return view('admin::admin.users.index', compact('users'));
+        return view('admin::admin.users.index', compact('users', 'title'));
     }
 
     public function createUser()
     {
-        return view('admin::admin.users.create');
+        $title = "Thêm tài khoản";
+        return view('admin::admin.users.create', compact('title'));
     }
 
     public function storeUser(Request $request)
@@ -59,14 +61,16 @@ class UserController extends Controller
 
     public function showDetailUser(string $id)
     {
+        $title = "Thông tin chi tiết tài khoản";
         $user = User::find($id);
-        return view('admin::admin.users.show', compact('user'));
+        return view('admin::admin.users.show', compact('user', 'title'));
     }
 
     public function showEditUser(string $id)
     {
+        $title = "Sửa tài khoản";
         $user = User::find($id);
-        return view('admin::admin.users.edit', compact('user'));
+        return view('admin::admin.users.edit', compact('user', 'title'));
     }
 
     public function updateUser(Request $request, string $id)

@@ -11,13 +11,15 @@ class AccountController extends Controller
 {
     public function showAccount()
     {
+        $title = "Quản lý tài khoản Admin";
         $accounts = Account::all();
-        return view('admin.accounts.index', compact('accounts'));
+        return view('admin.accounts.index', compact('accounts', 'title'));
     }
 
     public function createAccount()
     {
-        return view('admin.accounts.create');
+        $title = "Thêm tài khoản";
+        return view('admin.accounts.create', compact('title'));
     }
 
     public function storeAccount(Request $request)
@@ -42,14 +44,16 @@ class AccountController extends Controller
 
     public function showDetailAccount(string $id)
     {
+         $title = "Thông tin chi tiết tài khoản";
         $account = Account::find($id);
-        return view('admin.accounts.show', compact('account'));
+        return view('admin.accounts.show', compact('account', 'title'));
     }
 
     public function showEditAccount(string $id)
     {
+        $title = "Sửa tài khoản";
         $account = Account::find($id);
-        return view('admin.accounts.edit', compact('account'));
+        return view('admin.accounts.edit', compact('account', 'title'));
     }
 
     public function updateAccount(Request $request, string $id)

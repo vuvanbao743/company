@@ -45,13 +45,13 @@ Route::prefix('admins') // , 'check.import_export'
             Route::post('/import', [AdminImportController::class, 'import'])->name('admins.import');
             
             // quản lý tắt bật package import export
-            Route::get('/import-export', [AdminSettingController::class, 'showView'])
-                ->name('admins.import_export');
+            // Route::get('/import-export', [AdminSettingController::class, 'showView'])
+            //     ->name('admins.import_export');
             Route::post('/import-export', [AdminSettingController::class, 'ImportExport'])
                 ->name('admins.import_export');
 
             // quản lý tắt bật package theme
-            Route::get('/settings', [AdminSettingController::class, 'edit'])->name('admins.settings');
+            Route::get('/settings', [AdminSettingController::class, 'showView'])->name('admins.settings');
             Route::post('/settings', [AdminSettingController::class, 'update'])->name('admins.settings.update');
         });
     });

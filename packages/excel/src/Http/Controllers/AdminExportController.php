@@ -28,7 +28,7 @@ class AdminExportController extends Controller
         $sheet = $spreadsheet->getActiveSheet();
 
         // Header
-        $sheet->fromArray(['Name', 'Email', 'Role', 'Created At'], NULL, 'A1');
+        $sheet->fromArray(['Tên', 'Email', 'Vai Trò', 'Ngày Tạo'], NULL, 'A1');
 
         // Dữ liệu
         $rowIndex = 2;

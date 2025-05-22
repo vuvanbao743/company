@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "bootstrap-icons";
+  src: url("/assets/icon/fonts/bootstrap-icons.woff2") format("woff2"),
+       url("/assets/icon/fonts/bootstrap-icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  display: inline-block;
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  speak: none;
+  text-decoration: none;
+  vertical-align: -0.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bi-speedometer::before { content: "\F580"; }
+.bi-table::before       { content: "\F5AA"; }
+.bi-files::before       { content: "\F3C2"; }
+.bi-circle::before      { content: "\f27b"; }
+.bi-arrows-fullscreen::before { content: "\F62C"; }
+.bi-fullscreen-exit::before { content: "\F62D"; }
+.bi-list::before {
+  content: "\F479"; /* Mã css boostrap */
+}
+.bi-eye::before {
+  content: "\F341"; 
+  color: blue;
+}
+.bi-pen::before {
+  content: "\F4C8"; 
+  color: #000;
+}
+.bi-trash::before {
+  content: "\F5DE"; 
+  color: red;
+}
+

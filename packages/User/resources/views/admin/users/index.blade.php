@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte.master')
 
 @section('content')
     <!DOCTYPE html>
@@ -64,16 +64,16 @@
 
                         <td>
                             <a href="{{ route('admins.detail-user', $item->id) }}">
-                                <button type="button" class="btn btn-warning btn-sm">Show</button>
+                                 <i class="bi bi-eye"></i>
                             </a>
                             <a href="{{ route('admins.edit-user', $item->id) }}">
-                                <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                <i class="bi bi-pen"></i>
                             </a>
                             <form action="{{ route('admins.delete-user', $item->id) }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                 <i class="bi bi-trash"></i>
                             </form>
                         </td>
                     </tr>

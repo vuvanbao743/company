@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte.master')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +18,7 @@
 
     @section('content')
         <div class="container mt-4">
-            <h2 class="text-center mb-4">Thông tin tài khoản</h2>
+          
 
             <div class="card">
                 <div class="card-body">

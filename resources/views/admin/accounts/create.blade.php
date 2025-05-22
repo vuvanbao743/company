@@ -1,5 +1,5 @@
 
-@extends('adminlte::page')
+@extends('adminlte.master')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <h1 style="text-align: center">Thêm tài khoản admin</h1>
+ 
 <div class="container">
     <form action="{{ route('admins.store-account') }}" method="POST">
         @csrf

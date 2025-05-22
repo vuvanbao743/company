@@ -50,7 +50,8 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        $title = "trang chu";
+        $title = "Trang chủ";
+        // $content = "Trang chủ";
         $user = auth('admin')->user();
 
         if (!$user) {
@@ -58,6 +59,6 @@ class AuthController extends Controller
                 ->with('error', 'Bạn chưa đăng nhập. Vui lòng đăng nhập.');
         }
 
-        return view('admin.dashboard', compact('user', 'title'));
+        return view('adminlte.dashboard', compact('user', 'title'));
     }
 }

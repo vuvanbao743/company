@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte.master')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,12 +18,12 @@
 
     @section('content')
         <div class="container mt-4">
-            <h2 class="text-center mb-4">Thông tin tài khoản admin</h2>
+           
 
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $account['name'] }}</h4>
-
+                    <br>
                     <p><strong>Email:</strong> {{ $account['email'] }}</p>
                     <p><strong>Vai trò:</strong>
                         @if ($account['role'] == 1)

@@ -8,12 +8,12 @@ use App\Http\Controllers\Controller;
 
 class AdminSettingController extends Controller
 {
-    public function edit()
-    {
-        $title = "Cài đặt quản trị viên";
-        $enabled = Setting::get('admin_package_enabled', false);
-        return view('admin.settings', compact('enabled', 'title'));
-    }
+    // public function edit()
+    // {
+    //     $title = "Cài đặt quản trị viên";
+    //     $enabled = Setting::get('admin_package_enabled', false);
+    //     return view('admin.settings', compact('enabled', 'title'));
+    // }
 
     public function update(Request $request)
     {
@@ -25,8 +25,11 @@ class AdminSettingController extends Controller
 
     public function showView()
     {
-        $enabled = Setting::get('import_export_enabled', false);
-        return view('admin.import_export', compact('enabled'));
+        $title = "Quản lý Package";
+        $enabled_excel = Setting::get('import_export_enabled', false);
+        $enabled_theme = Setting::get('admin_package_enabled', false);
+
+        return view('admin.settings', compact('enabled_excel','enabled_theme', 'title'));
     }
 
     public function ImportExport(Request $request)
