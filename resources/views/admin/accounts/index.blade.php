@@ -27,14 +27,6 @@
             </div>
         @endif
 
-        @auth
-            @if (auth()->user()->role == 1)
-                <a href="{{ route('admins.create-account') }}">
-                    <button type="button" class="btn btn-success mb-3">Add</button>
-                </a>
-            @endif
-        @endauth
-
         @php
             $packageEnabled = \App\Models\Setting::get('import_export_enabled', true);
         @endphp
@@ -58,8 +50,15 @@
         @endif
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header justify-content-between d-flex">
                 <h3 class="card-title">Quản lý tài khoản Admin</h3>
+                @auth
+                    @if (auth()->user()->role == 1)
+                        <a href="{{ route('admins.create-account') }}" class="ms-auto">
+                            <button type="button" class="btn btn-success">Thêm</button>
+                        </a>
+                    @endif
+                @endauth
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -70,7 +69,7 @@
                             <th scope="col">Tên</th>
                             <th scope="col">Email</th>
                             <th scope="col">Vai trò</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,7 +124,7 @@
                             <th scope="col">Tên</th>
                             <th scope="col">Email</th>
                             <th scope="col">Vai trò</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Hành động</th>
                         </tr>
                     </tfoot>
                 </table>

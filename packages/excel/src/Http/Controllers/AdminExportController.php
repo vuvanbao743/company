@@ -28,15 +28,16 @@ class AdminExportController extends Controller
         $sheet = $spreadsheet->getActiveSheet();
 
         // Header
-        $sheet->fromArray(['Tên', 'Email', 'Vai Trò', 'Ngày Tạo'], NULL, 'A1');
+        $sheet->fromArray(['Tên', 'Email','Mật Khẩu', 'Vai Trò', 'Ngày Tạo'], NULL, 'A1');
 
         // Dữ liệu
         $rowIndex = 2;
         foreach ($admins as $admin) {
             $sheet->setCellValue("A$rowIndex", $admin['name'] ?? '');
             $sheet->setCellValue("B$rowIndex", $admin['email'] ?? '');
-            $sheet->setCellValue("C$rowIndex", $admin['role'] == 1 ? 'Quản trị viên' : 'Nhân viên');
-            $sheet->setCellValue("D$rowIndex", isset($admin['created_at']) ? $admin['created_at']->toDateTime()->format('Y-m-d H:i:s') : '');
+            $sheet->setCellValue("C$rowIndex", $admin['password'] ?? '');
+            $sheet->setCellValue("D$rowIndex", $admin['role'] == 1 ? 'Quản trị viên' : 'Nhân viên');
+            $sheet->setCellValue("E$rowIndex", isset($admin['created_at']) ? $admin['created_at']->toDateTime()->format('Y-m-d H:i:s') : '');
             $rowIndex++;
         }
 

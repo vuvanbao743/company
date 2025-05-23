@@ -32,16 +32,8 @@
 .bi-list::before {
   content: "\F479"; /* Mã css boostrap */
 }
-.bi-eye::before {
-  content: "\F341"; 
-  color: blue;
-}
-.bi-pen::before {
-  content: "\F4C8"; 
-  color: #000;
-}
-.bi-trash::before {
-  content: "\F5DE"; 
-  color: red;
-}
-
+.bi-eye::before {content: "\F341"; color: blue;}
+.bi-pen::before {content: "\F4C8"; color: #000;}
+.bi-trash::before {content: "\F5DE"; color: red;}
+.bi-envelope::before {content: "\F32F";}
+.bi-lock::before {content: "\F47B";}

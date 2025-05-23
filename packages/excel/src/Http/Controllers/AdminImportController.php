@@ -4,7 +4,6 @@ namespace Excel\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use MongoDB\Client;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 use MongoDB\BSON\UTCDateTime;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -29,29 +28,29 @@ class AdminImportController extends Controller
         $client = new Client("mongodb://localhost:27017");
         $collection = $client->admindb->admins;
 
-        // Chuyển dữ liệu
-        $documents = [];
         foreach ($rows as $row) {
-            // Chuyển đổi role từ chuỗi sang số
-            $roleText = strtolower(trim($row[2] ?? ''));
+            $name     = $row[0] ?? '';
+            $email    = $row[1] ?? '';
+            $password = $row[2] ?? '';
+            $roleText = strtolower(trim($row[3] ?? '')); // Chuyển đổi vai trò chuỗi -> chữ thường
+            $created  = $row[4] ?? now();
+
+            // Chuyển đổi role từ chuỗi -> số
             $role = match ($roleText) {
                 'quản trị viên' => 1,
                 'nhân viên'     => 2,
             };
 
             $collection->updateOne(
-                ['email' => $row[1]], // Điều kiện tìm
+                ['email' => $email],
                 ['$set' => [
-                    'name'       => $row[0] ?? '',
+                    'name'       => $name,
+                    'password'   => $password,
                     'role'       => $role,
-                    'created_at' => new UTCDateTime(strtotime($row[3] ?? now()) * 1000),
+                    'created_at' => new UTCDateTime(strtotime($created) * 1000),
                 ]],
-                ['upsert' => true] // Nếu không có thì insert
+                ['upsert' => true]
             );
-        }
-
-        if (!empty($documents)) {
-            $collection->insertMany($documents);
         }
 
         return back()->with('success', 'Import thành công!');

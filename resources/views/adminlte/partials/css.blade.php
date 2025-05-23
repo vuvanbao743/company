@@ -16,7 +16,7 @@
  <!--end::Required Plugin(AdminLTE)-->
  <!-- apexcharts -->
  <link href="css/bootstrap.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/icon/icons/bootstrap-icons.css">
+<link rel="stylesheet" href="{{asset('assets/icon/icons/bootstrap-icons.css')}}">
 
 
 

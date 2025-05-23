@@ -46,12 +46,17 @@
                                 placeholder="Mật khẩu" required>
                             <label for="loginPassword">Mật khẩu</label>
                         </div>
-                        <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+                        <div class="input-group-text"><span class="bi bi-lock"></span></div>
+                    </div>
+
+                    <div class="d-grid gap-2 mb-3">
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <a href="/" class="btn btn-primary">Quay về trang chủ</a>
                     </div>
+
                 </form>
 
             </div>
