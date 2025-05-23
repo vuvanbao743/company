@@ -15,14 +15,7 @@ class AdminSettingController extends Controller
     //     return view('admin.settings', compact('enabled', 'title'));
     // }
 
-    public function update(Request $request)
-    {
-        $enabled = $request->boolean('admin_package_enabled');
-        Setting::set('admin_package_enabled', $enabled);
-        return redirect()->back()->with('status', 'Cập nhật thành công!');
-    }
-    //import export
-
+    // view package
     public function showView()
     {
         $title = "Quản lý Package";
@@ -32,10 +25,19 @@ class AdminSettingController extends Controller
         return view('admin.settings', compact('enabled_excel','enabled_theme', 'title'));
     }
 
+    // update package import export
     public function ImportExport(Request $request)
     {
         $enabled = $request->boolean('import_export_enabled');
         Setting::set('import_export_enabled', $enabled);
+        return redirect()->back()->with('status', 'Cập nhật thành công!');
+    }
+
+    // update package theme
+    public function update(Request $request)
+    {
+        $enabled = $request->boolean('admin_package_enabled');
+        Setting::set('admin_package_enabled', $enabled);
         return redirect()->back()->with('status', 'Cập nhật thành công!');
     }
 }

@@ -64,7 +64,7 @@
 
                         <td>
                             <a href="{{ route('admins.detail-user', $item->id) }}">
-                                 <i class="bi bi-eye"></i>
+                                <i class="bi bi-eye"></i>
                             </a>
                             <a href="{{ route('admins.edit-user', $item->id) }}">
                                 <i class="bi bi-pen"></i>
@@ -73,7 +73,10 @@
                                 onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                                 @csrf
                                 @method('DELETE')
-                                 <i class="bi bi-trash"></i>
+                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline text-danger"
+                                    style="border: none; background: none;">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

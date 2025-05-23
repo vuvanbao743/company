@@ -19,8 +19,8 @@
     </head>
 
     <body>
-        
-        
+
+
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -42,7 +42,7 @@
             <div class="d-flex justify-content-between mb-3">
                 <div>
                     <a href="{{ route('admins.export') }}" class="btn btn-outline-primary">
-                        Export Excel
+                        Export
                     </a>
                 </div>
 
@@ -51,7 +51,7 @@
                     @csrf
                     <input type="file" name="excel_file" class="form-control" required>
                     <button type="submit" class="btn btn-outline-success">
-                        Import Excel
+                        Import
                     </button>
                 </form>
             </div>
@@ -92,7 +92,7 @@
                                     @if (auth()->user()->role == 1)
                                         <td>
                                             <a href="{{ route('admins.detail-account', $item->id) }}">
-                                                  <i class="bi bi-eye"></i>
+                                                <i class="bi bi-eye"></i>
                                             </a>
                                             <a href="{{ route('admins.edit-account', $item->id) }}">
                                                 <i class="bi bi-pen"></i>
@@ -101,8 +101,12 @@
                                                 class="d-inline" onsubmit="return confirm('You sure you want to delete?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <i class="bi bi-trash"></i>
+                                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline text-danger"
+                                                    style="border: none; background: none;">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
                                             </form>
+
                                         </td>
                                     @elseif (auth()->user()->role == 2 && $item->role != 1)
                                         <td>
