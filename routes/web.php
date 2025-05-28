@@ -13,6 +13,7 @@ Route::middleware(['web', 'check.admin.package.enabled'])
     ->get('/', [ProductController::class, 'homepage'])
     ->name('home');
 
+    
 // admin dashboard
 Route::prefix('admins') // , 'check.import_export'
     ->middleware(['web', 'admin.auth', 'admin.default.guard'])
