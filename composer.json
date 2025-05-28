@@ -34,14 +34,21 @@
             "PhpOffice\\PhpSpreadsheet\\": "packages/excel/PhpOffice/PhpSpreadsheet/src/PhpSpreadsheet/"
         }
     },
-    "repositories": [
+   "repositories": [
         {
             "type": "path",
-            "url": "packages/User",
-            "url": "packages/Product",
-            "url": "packages/maatwebsite/excel"
+            "url": "packages/User"
+        },
+        {
+            "type": "path",
+            "url": "packages/Product"
+        },
+        {
+            "type": "path",
+            "url": "packages/excel/Maatwebsite/LaravelExcel"
         }
     ],
+
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
