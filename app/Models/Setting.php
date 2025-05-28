@@ -11,10 +11,10 @@ class Setting extends Model
     protected $keyType = 'string';
     protected $fillable = ['_id', 'value'];
 
-    // public static function get($key, $default = null)
-    // {
-    //     return optional(self::find($key))->value ?? $default;
-    // }
+    public static function get($key, $default = null)
+    {
+        return optional(self::find($key))->value ?? $default;
+    }
 
     public static function set($key, $value)
     {
