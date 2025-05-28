@@ -1,10 +1,7 @@
-# Laravel 10 + PHP 8.2 + Composer + Node
 FROM php:8.2-fpm
 
-# Set working directory
 WORKDIR /var/www
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -20,21 +17,18 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath
 
-# Install Composer
+# ✨ Cài MongoDB extension
+RUN pecl install mongodb && docker-php-ext-enable mongodb
+
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 
-# Copy app files
 COPY . .
 
-# Install PHP dependencies
 RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist --optimize-autoloader
 
-# Set permissions
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage
 
-# Expose port (tùy theo server bạn chạy web server nào)
 EXPOSE 8000
 
-# Start Laravel server (dùng cho dev/demo, bạn có thể đổi sang serve qua nginx)
 CMD php artisan serve --host=0.0.0.0 --port=8000
