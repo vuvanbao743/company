@@ -1,4 +1,4 @@
-@extends('user::client.template1.master')
+@extends('client.template1.master')
 
 @section('content')
     <div class="site-blocks-cover" style="background-image: url('{{ asset('assets/client/images/hero_1.jpg') }}');"
