@@ -21,7 +21,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath
 
 # Cài MongoDB extension
-RUN pecl install mongodb && docker-php-ext-enable mongodb
+RUN apt-get update && apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev && \
+    pecl install mongodb && \
+    docker-php-ext-enable mongodb
 
 # Install Composer
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
