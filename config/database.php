@@ -34,7 +34,7 @@ return [
         'mongodb' => [
             'driver' => 'mongodb',
             'dsn' => env('DB_URI'),
-            'database' => 'admin',
+            'database' => env('DB_DATABASE', 'admin'),
         ],
 
 
