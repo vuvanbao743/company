@@ -1,29 +1,17 @@
 <?php
 
-use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use User\Http\Controllers\AuthController;
 use App\Http\Controllers\AccountController;
+use Product\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminSettingController;
 use Excel\Http\Controllers\AdminExportController;
 use Excel\Http\Controllers\AdminImportController;
 
 
-Route::middleware(['web','check.admin.package.enabled'])->get('/', function () {
-    // if (!Auth::guard('user')->check() && !Auth::guard('admin')->check()) {
-    //     return redirect()->route('login');
-    // }
-
-    // return view('admin::client.template2.index');
-
-     $adminPackageEnabled = Setting::get('admin_package_enabled', false);
-
-    if ($adminPackageEnabled) {
-        return view('admin::client.template1.index');
-    } else {
-        return view('admin::client.template2.index');
-    }
-})->name('home');
+Route::middleware(['web', 'check.admin.package.enabled'])
+    ->get('/', [ProductController::class, 'homepage'])
+    ->name('home');
 
 // admin dashboard
 Route::prefix('admins') // , 'check.import_export'

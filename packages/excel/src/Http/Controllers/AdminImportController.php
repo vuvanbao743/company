@@ -2,7 +2,7 @@
 
 namespace Excel\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;    
 use MongoDB\Client;
 use Illuminate\Http\Request;
 use MongoDB\BSON\UTCDateTime;

@@ -11,25 +11,25 @@
     <meta name="author" content="TemplatesJungle">
     <meta name="keywords" content="Online Store">
     <meta name="description" content="Stylish - Shoes Online Store HTML Template">
-    @include('user::client.template2.layouts.partials.css')
+    @include('client.template2.layouts.partials.css')
 </head>
 
 <body>
-    @include('user::client.template2.layouts.partials.header-top')
+    @include('client.template2.layouts.partials.header-top')
    
       <header id="header" class="site-header text-black">
-            @include('user::client.template2.layouts.partials.header-top-tag-header')
-            @include('user::client.template2.layouts.partials.header-nav')
+            @include('client.template2.layouts.partials.header-top-tag-header')
+            @include('client.template2.layouts.partials.header-nav')
         </header>
 
         @yield('content')
 
         <footer id="footer" class="py-5 border-top">
-            @include('user::client.template2.layouts.partials.footer')
+            @include('client.template2.layouts.partials.footer')
         </footer>
 
 
-    @include('user::client.template2.layouts.partials.js')
+    @include('client.template2.layouts.partials.js')
     @yield('scripts')
 </body>
 

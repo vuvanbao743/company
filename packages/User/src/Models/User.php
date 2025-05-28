@@ -1,12 +1,20 @@
 <?php
 
 namespace User\Models;
-
-use Illuminate\Contracts\Auth\Authenticatable; // Thêm dòng này
+// use User\Database\Factories\UserFactory;
+use User\Database\Factories\UserFactory;
+// use Database\Factories\UserFactory;
 use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\Authenticatable; // Thêm dòng này
 
 class User extends Model implements Authenticatable // Implement Authenticatable
 {
+    use HasFactory;
+    public static function newFactory()
+    {
+        return UserFactory::new();
+    }
     protected $connection = 'mongodb';
     protected $table = 'users';
 

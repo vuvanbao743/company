@@ -28,6 +28,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "User\\": "packages/User/src/",
+            "Product\\": "packages/Product/src/",
             "Excel\\": "packages/Excel/src/",
             "Maatwebsite\\Excel\\": "packages/excel/Maatwebsite/LaravelExcel/src/",
             "PhpOffice\\PhpSpreadsheet\\": "packages/excel/PhpOffice/PhpSpreadsheet/src/PhpSpreadsheet/"
@@ -36,7 +37,9 @@
     "repositories": [
         {
             "type": "path",
-            "url": "packages/User"
+            "url": "packages/User",
+            "url": "packages/Product",
+            "url": "packages/maatwebsite/excel"
         }
     ],
     "autoload-dev": {

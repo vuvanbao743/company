@@ -56,6 +56,12 @@
                       <p>User</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{route('admins.product')}}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Product</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">

@@ -1,0 +1,18 @@
+{
+    "name": "product/admin",
+    "description": "Admin package for Laravel",
+    "type": "library",
+    "autoload": {
+      "psr-4": {
+        "Product\\": "src/"
+      }
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+           "Product\\Providers\\ProductServiceProvider"
+        ]
+      }
+    }
+  }
+  

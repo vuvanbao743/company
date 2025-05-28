@@ -1,26 +1,8 @@
 <?php
 
-use App\Models\Setting;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use User\Http\Controllers\AuthController;
 use User\Http\Controllers\UserController;
-// trang chủ
-Route::middleware(['web','check.admin.package.enabled'])->get('/', function () {
-    // if (!Auth::guard('user')->check() && !Auth::guard('admin')->check()) {
-    //     return redirect()->route('login');
-    // }
-
-    // return view('admin::client.template2.index');
-
-     $adminPackageEnabled = Setting::get('admin_package_enabled', false);
-
-    if ($adminPackageEnabled) {
-        return view('admin::client.template1.index');
-    } else {
-        return view('admin::client.template2.index');
-    }
-})->name('home');
 
 // login logout
 Route::middleware(['web'])->group(function () {

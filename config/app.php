@@ -76,6 +76,7 @@ return [
          */
         MongoDB\Laravel\MongoDBServiceProvider::class, // MongoDB provider 
         User\AdminServiceProvider::class,    // Package 
+        Product\Providers\ProductServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class, // Excel provider
         /*
          * Application Service Providers...
