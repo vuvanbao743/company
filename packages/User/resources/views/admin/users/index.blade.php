@@ -57,7 +57,7 @@
 
                                 <td>
                                     @if ($item->avatar)
-                                        <img src="{{ asset('storage/avatars' . $item->avatar) }}" alt="avatar" width="100px"
+                                        <img src="{{ asset('storage/' . $item->avatar) }}" alt="avatar" width="100px"
                                             height="70px" style="object-fit: cover;">
                                             
                                     @else
