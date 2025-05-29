@@ -61,6 +61,7 @@
     <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     @include('adminlte.partials.js')
+    @yield('scripts')
 </body>
 <!--end::Body-->
 

@@ -57,12 +57,12 @@
 @endsection
 
 @section('scripts')
-    {{-- Cloudinary Upload Widget --}}
-    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
         var myWidget = cloudinary.createUploadWidget({
-            cloudName: 'deyxfmi2b', // <-- thay bằng Cloud Name của bạn
-            uploadPreset: 'product_images' // <-- thay bằng Upload Preset của bạn
+            cloudName: 'deyxfmi2b',
+            uploadPreset: 'product_images' // bạn đã tạo preset này trong Cloudinary chưa?
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 document.getElementById("uploaded_image").value = result.info.secure_url;
@@ -71,8 +71,12 @@
             }
         });
 
-        document.getElementById("upload_widget").addEventListener("click", function () {
-            myWidget.open();
-        }, false);
-    </script>
+        const uploadBtn = document.getElementById("upload_widget");
+        if (uploadBtn) {
+            uploadBtn.addEventListener("click", function () {
+                myWidget.open();
+            });
+        }
+    });
+</script>
 @endsection
