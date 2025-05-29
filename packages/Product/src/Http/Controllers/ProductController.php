@@ -120,7 +120,7 @@ class ProductController extends Controller
     {
         $adminPackageEnabled = Setting::get('admin_package_enabled', false);
 
-        $products = Product::latest()->take(8)->get(); // hoặc all()
+        $products = Product::latest()->take(5)->get(); 
         $view = $adminPackageEnabled ? 'client.template1.index' : 'client.template2.index';
 
         return view($view, compact('products'));
