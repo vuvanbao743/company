@@ -51,8 +51,7 @@
 
                                 <td>
                                     @if ($item->avatar)
-                                        <img src="{{ asset('storage/' . $item->avatar) }}" alt="avatar" width="100px"
-                                            height="70px" style="object-fit: cover;">
+                                        <img src="{{ Storage::url($item->avatar) }}" alt="product image" width="100" height="70" style="object-fit: cover;">
                                             
                                     @else
                                         <span class="text-muted">No Image</span>
