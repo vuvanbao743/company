@@ -102,7 +102,7 @@
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Xem/Sửa thông tin</a>
                                 {{-- @endif --}}
                             @elseif (auth('user')->check())
-                                <h6 class="dropdown-header">Xin chào {{ auth('admin')->user()->name }}</h6>
+                                <h6 class="dropdown-header">Xin chào {{ auth('user')->user()->name }}</h6>
                                 {{-- @if ($user) --}}
                                     
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Xem/Sửa thông tin</a>
