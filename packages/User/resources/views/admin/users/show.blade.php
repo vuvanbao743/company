@@ -18,16 +18,17 @@
 
     @section('content')
         <div class="container mt-4">
-          
+
 
             <div class="card">
                 <div class="card-body">
                     <div class="text-center mb-4">
+                       
                         @if ($user->avatar)
-                            <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" width="150" height="150"
-                                style=" object-fit: cover;">
+                            <img src="{{ $user->avatar }}" alt="User Image" width="250" height="250"
+                                style="object-fit: cover;">
                         @else
-                            <p class="text-muted">Không có ảnh đại diện</p>
+                            <p class="text-muted">Không có hình ảnh sản phẩm</p>
                         @endif
                     </div>
 

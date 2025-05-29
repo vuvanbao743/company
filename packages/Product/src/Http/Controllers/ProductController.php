@@ -77,7 +77,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price'       => 'required|numeric|min:0',
             'quantity'    => 'required|integer|min:0',
-            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image'       => 'nullable|string', // URL ảnh từ Cloudinary widget
         ]);
 
         if ($validator->fails()) {
@@ -91,15 +91,16 @@ class ProductController extends Controller
             'quantity'    => $request->quantity,
         ];
 
-        if ($request->hasFile('image')) {
-            $imageUrl = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-            $updateData['image'] = $imageUrl;
+        // Nếu có ảnh mới, thì cập nhật
+        if ($request->filled('image')) {
+            $updateData['image'] = $request->image;
         }
 
         $product->update($updateData);
 
         return redirect()->route('admins.product')->with('success', 'Cập nhật sản phẩm thành công!');
     }
+
 
     public function deleteProduct($id)
     {

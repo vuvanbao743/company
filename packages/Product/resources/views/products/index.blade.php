@@ -35,7 +35,7 @@
                             <td>{{ $stt++ }}</td>
                             <td>
                                 @if ($product->image)
-                                    <x-cloudinary::image public-id="{{ $product->image }}" width="100" height="100" />
+                                    <img src="{{ $product->image }}" width="100" height="100" />
                                 @else
                                     <span class="text-muted">No Image</span>
                                 @endif

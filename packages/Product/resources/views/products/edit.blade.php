@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <form action="{{ route('admins.product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admins.product.update', $product->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -24,8 +24,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Số lượng</label>
-                <input type="number" class="form-control" name="quantity"
-                    value="{{ old('quantity', $product->quantity) }}">
+                <input type="number" class="form-control" name="quantity" value="{{ old('quantity', $product->quantity) }}">
                 @error('quantity')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -40,15 +39,18 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Hình ảnh</label>
-                <input type="file" class="form-control" name="image" accept="image/*">
+                <label class="form-label">Ảnh sản phẩm</label><br>
+                <button type="button" id="upload_widget" class="btn btn-primary mb-2">Tải ảnh mới lên Cloudinary</button>
 
-                @if ($product->image)
-                    <div class="mt-2">
-                        <img src="{{ $product->image }}" alt="Product Image" width="150"
-                            style="object-fit: cover; border-radius: 8px;">
-                    </div>
-                @endif
+                {{-- input ẩn chứa URL ảnh --}}
+                <input type="hidden" name="image" id="uploaded_image" value="{{ old('image', $product->image) }}">
+
+                {{-- hiển thị ảnh cũ hoặc ảnh mới nếu vừa upload --}}
+                <div id="preview_image">
+                    @if ($product->image)
+                        <img src="{{ $product->image }}" width="150" style="object-fit: cover; border-radius: 8px;">
+                    @endif
+                </div>
 
                 @error('image')
                     <span class="text-danger">{{ $message }}</span>
@@ -64,4 +66,29 @@
             <button type="button" class="btn btn-primary">Quay lại danh sách</button>
         </a>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var myWidget = cloudinary.createUploadWidget({
+                cloudName: 'deyxfmi2b',
+                uploadPreset: 'product_images'
+            }, (error, result) => {
+                if (!error && result && result.event === "success") {
+                    document.getElementById("uploaded_image").value = result.info.secure_url;
+                    document.getElementById("preview_image").innerHTML =
+                        `<img src="${result.info.secure_url}" width="150" style="object-fit: cover; border-radius: 8px;">`;
+                }
+            });
+
+            const uploadBtn = document.getElementById("upload_widget");
+            if (uploadBtn) {
+                uploadBtn.addEventListener("click", function () {
+                    myWidget.open();
+                });
+            }
+        });
+    </script>
 @endsection

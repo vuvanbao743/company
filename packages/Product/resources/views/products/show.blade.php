@@ -7,11 +7,12 @@
 
                 <div class="text-center mb-4">
                     @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"
-                             width="250" height="250" style="object-fit: cover;">
+                        <img src="{{ $product->image }}" alt="Product Image" width="250" height="250"
+                            style="object-fit: cover;">
                     @else
                         <p class="text-muted">Không có hình ảnh sản phẩm</p>
                     @endif
+
                 </div>
 
                 <h4 class="card-title text-center">{{ $product->name }}</h4>

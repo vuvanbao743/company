@@ -113,8 +113,8 @@
                         <div class="col mb-4">
                             <div class="product-card position-relative">
                                 <div class="card-img">
-                                    {{-- <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image img-fluid"> --}}
-                                    {{-- <img src="{{ route('product.image', ['filename' => basename($product->image)]) }}" alt="product image" width="100"> --}}
+                                  <img src="{{ $product->image }}" alt="{{ $product->name }}"
+                    class="product-image img-fluid" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
                                     <div class="cart-concern position-absolute d-flex justify-content-center">
                                         <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
                                             <button type="button" class="btn btn-light" data-bs-toggle="modal"

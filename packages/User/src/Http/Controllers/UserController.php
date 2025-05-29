@@ -30,20 +30,15 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:admins,email',
-            'password' => 'required|string',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
             'phone'    => 'nullable|string|max:20',
             'address'  => 'nullable|string|max:255',
-            'image'   => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image'    => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
-        }
-
-        $avatarPath = null;
-        if ($request->hasFile('image')) {
-            $avatarPath = $request->file('image')->store('avatars', 'public');
         }
 
         User::create([
@@ -52,7 +47,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'phone'    => $request->phone,
             'address'  => $request->address,
-            'avatar'   => $avatarPath,
+            'avatar'   => $request->avatar,
         ]);
 
         return redirect()->route('admins.user')->with('success', 'Tạo tài khoản thành công!');
@@ -86,7 +81,7 @@ class UserController extends Controller
             'email'    => 'required|email',
             'phone'    => 'nullable|string|max:20',
             'address'  => 'nullable|string|max:255',
-            'avatar'   => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'avatar'   => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -104,10 +99,9 @@ class UserController extends Controller
             $updateData['password'] = Hash::make($request->password);
         }
 
-        if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $updateData['avatar'] = $avatarPath;
-        }
+        if ($request->filled('avatar')) {
+            $updateData['avatar'] = $request->avatar;
+        }  
 
         $account->update($updateData);
 
@@ -127,7 +121,7 @@ class UserController extends Controller
 
     public function userDetail()
     {
-       $user = Auth::guard('user')->user();
+        $user = Auth::guard('user')->user();
         return view('user::client.template1.profile', compact('user'));
     }
 
@@ -171,6 +165,5 @@ class UserController extends Controller
         $user->update();
 
         return redirect()->route('user.template1.profile.edit')->with('success', 'Cập nhật thành công!');
-        
     }
 }
