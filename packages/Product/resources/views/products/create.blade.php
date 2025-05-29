@@ -39,13 +39,11 @@
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Ảnh sản phẩm</label>
-                <br>
-                {{-- Cloudinary Upload Widget --}}
-                <x-cloudinary::widget />
-                {{-- Input hidden để lưu public_id sau khi upload --}}
-                <input type="hidden" name="image" id="cloudinary_image_id">
+             <div class="mb-3">
+                <label class="form-label">Ảnh sản phẩm</label><br>
+                <button type="button" id="upload_widget" class="btn btn-primary mb-2">Tải ảnh lên Cloudinary</button>
+                <input type="hidden" name="image" id="uploaded_image" value="{{ old('image') }}">
+                <div id="preview_image"></div>
                 @error('image')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -56,13 +54,25 @@
         </form>
     </div>
 
-    @push('scripts')
-        <script>
-            // Cloudinary upload widget callback
-            document.addEventListener("cloudinarywidgetsuccess", function(e) {
-                const publicId = e.detail.info.public_id;
-                document.getElementById('cloudinary_image_id').value = publicId;
-            });
-        </script>
-    @endpush
+@endsection
+
+@section('scripts')
+    {{-- Cloudinary Upload Widget --}}
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var myWidget = cloudinary.createUploadWidget({
+            cloudName: 'YOUR_CLOUD_NAME', // <-- thay bằng Cloud Name của bạn
+            uploadPreset: 'YOUR_UPLOAD_PRESET' // <-- thay bằng Upload Preset của bạn
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                document.getElementById("uploaded_image").value = result.info.secure_url;
+                document.getElementById("preview_image").innerHTML =
+                    `<img src="${result.info.secure_url}" width="150">`;
+            }
+        });
+
+        document.getElementById("upload_widget").addEventListener("click", function () {
+            myWidget.open();
+        }, false);
+    </script>
 @endsection
