@@ -35,8 +35,8 @@
                             <td>{{ $stt++ }}</td>
                             <td>
                                 @if ($product->image)
-                                    <img src="{{ asset('storage/products' . $product->image) }}" alt="product image"
-                                         width="100" height="70" style="object-fit: cover;">
+                                    <img src="{{ asset('storage/' . $product->image) }}" alt="product image" width="100"
+                                        height="70" style="object-fit: cover;">
                                 @else
                                     <span class="text-muted">No Image</span>
                                 @endif
@@ -53,7 +53,7 @@
                                     <i class="bi bi-pen"></i>
                                 </a>
                                 <form action="{{ route('admins.product.delete', $product->id) }}" method="POST"
-                                      class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">
+                                    class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">

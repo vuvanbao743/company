@@ -98,14 +98,15 @@
                             @if (auth('admin')->check())
                                 <h6 class="dropdown-header">Xin chào {{ auth('admin')->user()->name }}</h6>
                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Trang Admin</a>
-                                @if ($user)
+                                {{-- @if ($user) --}}
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Xem/Sửa thông tin</a>
-                                @endif
+                                {{-- @endif --}}
                             @elseif (auth('user')->check())
-                                @if ($user)
-                                    <h6 class="dropdown-header">Xin chào {{ auth('admin')->user()->name }}</h6>
+                                <h6 class="dropdown-header">Xin chào {{ auth('admin')->user()->name }}</h6>
+                                {{-- @if ($user) --}}
+                                    
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Xem/Sửa thông tin</a>
-                                @endif
+                                {{-- @endif --}}
                             @endif
 
                             <form method="POST" action="{{ route('logout') }}">
