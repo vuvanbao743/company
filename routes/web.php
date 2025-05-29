@@ -35,7 +35,7 @@ Route::middleware(['web', 'check.admin.package.enabled'])
     ->name('home');
 
 Route::get('/test-cloud', function () {
-    dd(config('cloudinary')); // xem toàn bộ cấu hình cloudinary
+    dd(config('cloudinary')); // xem toàn bộ cấu hình cloudinary check
 });
 // admin dashboard
 Route::prefix('admins') // , 'check.import_export'
