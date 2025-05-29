@@ -33,8 +33,9 @@
                     @foreach ($products as $product)
                         <tr>
                             <td>{{ $stt++ }}</td>
-                            <td>
+                            <td>       
                                 @if ($product->image)
+                                    <?php dd($product->image) ?>
                                     <img src="{{ asset('storage/' . $product->image) }}" alt="product image" width="100"
                                         height="70" style="object-fit: cover;">
                                 @else
