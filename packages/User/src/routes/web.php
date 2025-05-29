@@ -1,14 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 use User\Http\Controllers\AuthController;
 use User\Http\Controllers\UserController;
 
-Route::get('/link-storage', function () {
-    Artisan::call('storage:link');
-    return 'Linked!';
-});
 // login logout
 Route::middleware(['web'])->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])

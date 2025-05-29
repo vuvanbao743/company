@@ -35,7 +35,7 @@
                             <td>{{ $stt++ }}</td>
                             <td>       
                                 @if ($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}" width="100px" alt="product image">
+                                    <img src="{{ route('product.image', ['filename' => basename($product->image)]) }}" alt="product image" width="100">
                                 @else
                                     <span class="text-muted">No Image</span>
                                 @endif

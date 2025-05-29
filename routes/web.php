@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 use User\Http\Controllers\AuthController;
 use App\Http\Controllers\AccountController;
 use Product\Http\Controllers\ProductController;
@@ -8,6 +10,16 @@ use App\Http\Controllers\AdminSettingController;
 use Excel\Http\Controllers\AdminExportController;
 use Excel\Http\Controllers\AdminImportController;
 
+
+Route::get('/product-image/{filename}', function ($filename) {
+    $path = storage_path('app/public/products/' . $filename);
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return Response::file($path);
+})->name('product.image');
 
 Route::middleware(['web', 'check.admin.package.enabled'])
     ->get('/', [ProductController::class, 'homepage'])
