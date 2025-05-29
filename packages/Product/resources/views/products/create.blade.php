@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <h3>Thêm sản phẩm</h3>
 
-        <form action="{{ route('admins.product.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admins.product.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
@@ -41,7 +41,11 @@
 
             <div class="mb-3">
                 <label class="form-label">Ảnh sản phẩm</label>
-                <input type="file" class="form-control" name="image" accept="image/*">
+                <br>
+                {{-- Cloudinary Upload Widget --}}
+                <x-cloudinary::widget />
+                {{-- Input hidden để lưu public_id sau khi upload --}}
+                <input type="hidden" name="image" id="cloudinary_image_id">
                 @error('image')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -51,4 +55,14 @@
             <a href="{{ route('admins.product') }}" class="btn btn-secondary">Quay lại danh sách</a>
         </form>
     </div>
+
+    @push('scripts')
+        <script>
+            // Cloudinary upload widget callback
+            document.addEventListener("cloudinarywidgetsuccess", function(e) {
+                const publicId = e.detail.info.public_id;
+                document.getElementById('cloudinary_image_id').value = publicId;
+            });
+        </script>
+    @endpush
 @endsection

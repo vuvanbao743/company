@@ -33,9 +33,9 @@
                     @foreach ($products as $product)
                         <tr>
                             <td>{{ $stt++ }}</td>
-                            <td>       
+                            <td>
                                 @if ($product->image)
-                                    <img src="{{ $product->image }}" alt="product image" width="100">
+                                    <x-cloudinary::image public-id="{{ $product->image }}" width="100" height="100" />
                                 @else
                                     <span class="text-muted">No Image</span>
                                 @endif
