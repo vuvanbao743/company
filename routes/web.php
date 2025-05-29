@@ -34,7 +34,9 @@ Route::middleware(['web', 'check.admin.package.enabled'])
     ->get('/', [ProductController::class, 'homepage'])
     ->name('home');
 
-    
+Route::get('/test-cloud', function () {
+    dd(config('cloudinary')); // xem toàn bộ cấu hình cloudinary
+});
 // admin dashboard
 Route::prefix('admins') // , 'check.import_export'
     ->middleware(['web', 'admin.auth', 'admin.default.guard'])
