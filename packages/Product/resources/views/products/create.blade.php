@@ -61,8 +61,8 @@
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget({
-            cloudName: 'YOUR_CLOUD_NAME', // <-- thay bằng Cloud Name của bạn
-            uploadPreset: 'YOUR_UPLOAD_PRESET' // <-- thay bằng Upload Preset của bạn
+            cloudName: 'deyxfmi2b', // <-- thay bằng Cloud Name của bạn
+            uploadPreset: 'product_images' // <-- thay bằng Upload Preset của bạn
         }, (error, result) => {
             if (!error && result && result.event === "success") {
                 document.getElementById("uploaded_image").value = result.info.secure_url;
