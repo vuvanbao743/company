@@ -3,7 +3,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
-use App\Http\Middleware\CheckImportExportSetting;
+
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(Router $router): void
     {
-        $router->aliasMiddleware('check.import_export', CheckImportExportSetting::class);
+        if (env('APP_ENV') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
 
