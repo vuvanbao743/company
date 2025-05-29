@@ -32,16 +32,11 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price'       => 'required|numeric|min:0',
             'quantity'    => 'required|integer|min:0',
-            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image'       => 'required|string', // Lưu public_id (hoặc secure_url)
         ]);
 
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
-        }
-
-        $imageUrl = null;
-        if ($request->hasFile('image')) {
-            $imageUrl = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         }
 
         Product::create([
@@ -49,7 +44,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price'       => $request->price,
             'quantity'    => $request->quantity,
-            'image'       => $imageUrl,
+            'image'       => $request->image, // Đây là public_id hoặc URL
         ]);
 
         return redirect()->route('admins.product')->with('success', 'Tạo sản phẩm thành công!');
