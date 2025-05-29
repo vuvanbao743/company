@@ -20,6 +20,15 @@ Route::get('/product-image/{filename}', function ($filename) {
 
     return Response::file($path);
 })->name('product.image');
+Route::get('/user-image/{filename}', function ($filename) {
+    $path = storage_path('app/public/users/' . $filename);
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return Response::file($path);
+})->name('user.image');
 
 Route::middleware(['web', 'check.admin.package.enabled'])
     ->get('/', [ProductController::class, 'homepage'])

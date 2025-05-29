@@ -51,8 +51,7 @@
 
                                 <td>
                                     @if ($item->avatar)
-                                        <img src="{{ Storage::url($item->avatar) }}" alt="product image" width="100" height="70" style="object-fit: cover;">
-                                            
+                                        <img src="{{ route('user.image', ['filename' => basename($item->avatar)]) }}" alt="product image" width="100">
                                     @else
                                         <span class="text-muted">No Image</span>
                                     @endif
