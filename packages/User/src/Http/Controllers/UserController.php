@@ -34,7 +34,7 @@ class UserController extends Controller
             'password' => 'required|string',
             'phone'    => 'nullable|string|max:20',
             'address'  => 'nullable|string|max:255',
-            'avatar'   => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'image'   => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($validator->fails()) {
@@ -42,8 +42,8 @@ class UserController extends Controller
         }
 
         $avatarPath = null;
-        if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        if ($request->hasFile('image')) {
+            $avatarPath = $request->file('image')->store('avatars', 'public');
         }
 
         User::create([

@@ -59,6 +59,7 @@
                                     @if ($item->avatar)
                                         <img src="{{ asset('storage/avatars' . $item->avatar) }}" alt="avatar" width="100px"
                                             height="70px" style="object-fit: cover;">
+                                            
                                     @else
                                         <span class="text-muted">No Image</span>
                                     @endif
