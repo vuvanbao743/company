@@ -24,7 +24,8 @@
 
             <div class="mb-3">
                 <label class="form-label">Số lượng</label>
-                <input type="number" class="form-control" name="quantity" value="{{ old('quantity', $product->quantity) }}">
+                <input type="number" class="form-control" name="quantity"
+                    value="{{ old('quantity', $product->quantity) }}">
                 @error('quantity')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -44,7 +45,8 @@
 
                 @if ($product->image)
                     <div class="mt-2">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" width="150" style="object-fit: cover; border-radius: 8px;">
+                        <img src="{{ $product->image }}" alt="Product Image" width="150"
+                            style="object-fit: cover; border-radius: 8px;">
                     </div>
                 @endif
 
@@ -53,7 +55,8 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-success" onclick="return confirm('Bạn chắc chắn muốn cập nhật sản phẩm?')">Cập nhật sản phẩm</button>
+            <button type="submit" class="btn btn-success"
+                onclick="return confirm('Bạn chắc chắn muốn cập nhật sản phẩm?')">Cập nhật sản phẩm</button>
         </form>
 
         <br>
