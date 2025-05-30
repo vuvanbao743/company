@@ -21,37 +21,37 @@
             <div class="offcanvas-body">
                 <ul id="navbar" class="navbar-nav fw-bold justify-content-end align-items-center flex-grow-1">
                     <li class="nav-item dropdown">
-                        <a class="nav-link me-5 active dropdown-toggle border-0" href="#"
-                            data-bs-toggle="dropdown" aria-expanded="false">Home</a>
-                        <ul class="dropdown-menu fw-bold">
+                        <a class="nav-link me-5 " href="#"
+                          aria-expanded="false">Trang chủ</a>
+                        {{-- <ul class="dropdown-menu fw-bold">   data-bs-toggle="dropdown"active dropdown-toggle border-0
                             <li>
                                 <a href="index.html" class="dropdown-item">Home V1</a>
                             </li>
                             <li>
                                 <a href="index.html" class="dropdown-item">Home V2 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-5" href="#">Men</a>
+                        <a class="nav-link me-5" href="#">Đàn ông</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-5" href="#">Women</a>
+                        <a class="nav-link me-5" href="#">Phụ nữ</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link me-5 active dropdown-toggle border-0" href="#"
-                            data-bs-toggle="dropdown" aria-expanded="false">Page</a>
+                            data-bs-toggle="dropdown" aria-expanded="false">Trang</a>
                         <ul class="dropdown-menu fw-bold">
                             <li>
-                                <a href="index.html" class="dropdown-item">About Us </a>
+                                <a href="index.html" class="dropdown-item">Giới thiệu </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="index.html">Shop </a>
+                                <a class="dropdown-item" href="index.html">Cửa hàng </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="index.html">Blog </a>
+                                <a class="dropdown-item" href="index.html">Tin tức </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a class="dropdown-item" href="index.html">Single Product </a>
                             </li>
                             <li>
@@ -59,22 +59,22 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="index.html">Styles </a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modallong"
                                     class="dropdown-item">cart</a>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#modallogin"
                                 class="dropdown-item">Login</a>
                         </li> --}}
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link me-5" href="index.html">Shop</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link me-5" href="#">Sale</a>
+                        <a class="nav-link me-5" href="#">Mã giảm giá</a>
                     </li>
                 </ul>
             </div>

@@ -34,17 +34,17 @@
             </ul>
           </div>
           <div class="col d-none d-md-block">
-            <p class="text-center text-black m-0"><strong>Special Offer</strong>: Free Shipping on all the orders above $100
+            <p class="text-center text-black m-0"><strong>Ưu đãi</strong>: Miễn phí vận chuyển cho tất cả các đơn hàng trên 100k
             </p>
           </div>
           <div class="col">
             <ul class="d-flex justify-content-end gap-3 list-unstyled m-0">
               <li>
-                <a href="#">Contact</a>
+                <a href="#">Liên hệ</a>
               </li>
-              <li>
-                <a href="#">Cart</a>
-              </li>
+              {{-- <li>
+                <a href="#">Giỏ hàng</a>
+              </li> --}}
               {{-- <li>
                 <a href="#">Login</a>
               </li> --}}

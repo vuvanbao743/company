@@ -85,14 +85,13 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-7 col-md-12 mb-3">
                         <div class="coupon-header">
-                            <h2 class="display-7">10% OFF Discount Coupons</h2>
-                            <p class="m-0">Subscribe us to get 10% OFF on all the purchases</p>
+                            <h2 class="display-7">Mã giảm giá 10%</h2>
+                            <p class="m-0">Đăng ký để được GIẢM GIÁ 10% cho tất cả các giao dịch mua hàng</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12">
                         <div class="btn-wrap">
-                            <a href="#" class="btn btn-black btn-medium text-uppercase hvr-sweep-to-right">Email
-                                me</a>
+                            <a href="#" class="btn btn-black btn-medium text-uppercase hvr-sweep-to-right">Email</a>
                         </div>
                     </div>
                 </div>
@@ -102,9 +101,9 @@
     <section id="featured-products" class="product-store">
         <div class="container-md">
             <div class="display-header d-flex align-items-center justify-content-between">
-                <h2 class="section-title text-uppercase">Featured Products</h2>
+                <h2 class="section-title text-uppercase">Sản phẩm nổi bật</h2>
                 <div class="btn-right">
-                    <a href="index.html" class="d-inline-block text-uppercase text-hover fw-bold">View all</a>
+                    <a href="index.html" class="d-inline-block text-uppercase text-hover fw-bold">Xem tất cả</a>
                 </div>
             </div>
             <div class="product-content padding-small">
@@ -136,7 +135,7 @@
                                     <h3 class="card-title fs-6 fw-normal m-0">
                                         <a href="#">{{ $product->name }}</a>
                                     </h3>
-                                    <span class="card-price fw-bold">${{ number_format($product->price, 2) }}</span>
+                                    <span class="card-price fw-bold">{{ number_format($product->price) }} VNĐ</span>
                                 </div>
                             </div>
                         </div>
@@ -181,168 +180,45 @@
     <section id="latest-products" class="product-store py-2 my-2 py-md-5 my-md-5 pt-0">
         <div class="container-md">
             <div class="display-header d-flex align-items-center justify-content-between">
-                <h2 class="section-title text-uppercase">Latest Products</h2>
+                <h2 class="section-title text-uppercase">Sản phẩm mới nhất</h2>
                 <div class="btn-right">
-                    <a href="index.html" class="d-inline-block text-uppercase text-hover fw-bold">View all</a>
+                    <a href="index.html" class="d-inline-block text-uppercase text-hover fw-bold">Xem tất cả</a>
                 </div>
             </div>
             <div class="product-content padding-small">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
-                    <div class="col mb-4 mb-3">
-                        <div class="product-card position-relative">
-                            <div class="card-img">
-                                <img src="{{ asset('assets/template2/images/card-item6.jpg') }}" alt="product-item"
-                                    class="product-image img-fluid">
-                                <div class="cart-concern position-absolute d-flex justify-content-center">
-                                    <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#modallong">
-                                            <svg class="shopping-carriage">
-                                                <use xlink:href="#shopping-carriage"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-light" data-bs-target="#modaltoggle"
-                                            data-bs-toggle="modal">
-                                            <svg class="quick-view">
-                                                <use xlink:href="#quick-view"></use>
-                                            </svg>
-                                        </button>
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+                    @foreach ($products as $product)
+                        <div class="col mb-4">
+                            <div class="product-card position-relative">
+                                <div class="card-img">
+                                  <img src="{{ $product->image }}" alt="{{ $product->name }}"
+                    class="product-image img-fluid" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                                    <div class="cart-concern position-absolute d-flex justify-content-center">
+                                        <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
+                                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                                data-bs-target="#modallong">
+                                                <svg class="shopping-carriage">
+                                                    <use xlink:href="#shopping-carriage"></use>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-light" data-bs-target="#modaltoggle"
+                                                data-bs-toggle="modal">
+                                                <svg class="quick-view">
+                                                    <use xlink:href="#quick-view"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- cart-concern -->
-                            </div>
-                            <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                <h3 class="card-title fs-6 fw-normal m-0">
-                                    <a href="index.html">Running shoes for men</a>
-                                </h3>
-                                <span class="card-price fw-bold">$99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4 mb-3">
-                        <div class="product-card position-relative">
-                            <div class="card-img">
-                                <img src="{{ asset('assets/template2/images/card-item7.jpg') }}" alt="product-item"
-                                    class="product-image img-fluid">
-                                <div class="cart-concern position-absolute d-flex justify-content-center">
-                                    <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#modallong">
-                                            <svg class="shopping-carriage">
-                                                <use xlink:href="#shopping-carriage"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-light" data-bs-target="#modaltoggle"
-                                            data-bs-toggle="modal">
-                                            <svg class="quick-view">
-                                                <use xlink:href="#quick-view"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
+                                <div class="card-detail d-flex justify-content-between align-items-center mt-3">
+                                    <h3 class="card-title fs-6 fw-normal m-0">
+                                        <a href="#">{{ $product->name }}</a>
+                                    </h3>
+                                    <span class="card-price fw-bold">{{ number_format($product->price) }} VNĐ</span>
                                 </div>
-                                <!-- cart-concern -->
-                            </div>
-                            <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                <h3 class="card-title fs-6 fw-normal m-0">
-                                    <a href="index.html">Running shoes for men</a>
-                                </h3>
-                                <span class="card-price fw-bold">$99</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mb-4 mb-3">
-                        <div class="product-card position-relative">
-                            <div class="card-img">
-                                <img src="{{ asset('assets/template2/images/card-item8.jpg') }}" alt="product-item"
-                                    class="product-image img-fluid">
-                                <div class="cart-concern position-absolute d-flex justify-content-center">
-                                    <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#modallong">
-                                            <svg class="shopping-carriage">
-                                                <use xlink:href="#shopping-carriage"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-light" data-bs-target="#modaltoggle"
-                                            data-bs-toggle="modal">
-                                            <svg class="quick-view">
-                                                <use xlink:href="#quick-view"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- cart-concern -->
-                            </div>
-                            <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                <h3 class="card-title fs-6 fw-normal m-0">
-                                    <a href="index.html">Running shoes for men</a>
-                                </h3>
-                                <span class="card-price fw-bold">$99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4 mb-3">
-                        <div class="product-card position-relative">
-                            <div class="card-img">
-                                <img src="{{ asset('assets/template2/images/card-item9.jpg') }}" alt="product-item"
-                                    class="product-image img-fluid">
-                                <div class="cart-concern position-absolute d-flex justify-content-center">
-                                    <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#modallong">
-                                            <svg class="shopping-carriage">
-                                                <use xlink:href="#shopping-carriage"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-light" data-bs-target="#modaltoggle"
-                                            data-bs-toggle="modal">
-                                            <svg class="quick-view">
-                                                <use xlink:href="#quick-view"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- cart-concern -->
-                            </div>
-                            <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                <h3 class="card-title fs-6 fw-normal m-0">
-                                    <a href="index.html">Running shoes for men</a>
-                                </h3>
-                                <span class="card-price fw-bold">$99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4 mb-3">
-                        <div class="product-card position-relative">
-                            <div class="card-img">
-                                <img src="{{ asset('assets/template2/images/card-item10.jpg') }}" alt="product-item"
-                                    class="product-image img-fluid">
-                                <div class="cart-concern position-absolute d-flex justify-content-center">
-                                    <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#modallong">
-                                            <svg class="shopping-carriage">
-                                                <use xlink:href="#shopping-carriage"></use>
-                                            </svg>
-                                        </button>
-                                        <button type="button" class="btn btn-light" data-bs-target="#modaltoggle"
-                                            data-bs-toggle="modal">
-                                            <svg class="quick-view">
-                                                <use xlink:href="#quick-view"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- cart-concern -->
-                            </div>
-                            <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                <h3 class="card-title fs-6 fw-normal m-0">
-                                    <a href="index.html">Running shoes for men</a>
-                                </h3>
-                                <span class="card-price fw-bold">$99</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
